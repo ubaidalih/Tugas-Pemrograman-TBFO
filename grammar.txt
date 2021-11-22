@@ -1,0 +1,48 @@
+mkey = {"if" : "a", "elif" : "b", "else" : "c", "for" : "d", "in" : "e", "while" : "f", "continue" : "g", "pass" : "h", "break" : "i", "class" : "j", "def" : "k", "return" : "l", "as" : "m", 
+"import" : "n", "from" : "o", "raise" : "p", "and" : "q", "or" : "r", "not" : "s", "is" : "t", "True" : "u", "False" : "v", "None" : "w", "with" : "A"}
+
+/* OPERATOR */
+equal -> '='
+Relasi -> is | '>' equal | '<' equal | equal equal | '!' equal | < | >
+Arithmetic -> + | - | * | / | * * | / / | %
+Bitwise -> '&' | '~' | '>' '>' | '<' '<' | '^' | '|'
+Assign -> equal | Arithmetic equal | Bitwise equal
+Logic -> and | or
+Member -> in | not space in
+Identity -> is | is space not
+
+/* BRACKET */
+square_open -> '['
+square_close -> ']'
+round_open -> '('
+round_close -> ')'
+curly_open -> '{'
+curly_close -> '}'
+
+/* SPACE and EOL */
+space -> " " | space space
+NL -> "\n" | NL NL
+
+/* BOOL */
+false -> "False"
+true -> "True"
+none -> "None"
+
+/* and or etc */
+and -> "and"
+or -> "or"
+not -> "not"
+is -> "is"
+in -> "in"
+
+/* DEF and PASS*/
+
+/* CONDITIONAL */
+
+/* LOOP */
+
+/* IMPORT and WITH */
+
+/* CLASS */
+
+/* RAISE */
