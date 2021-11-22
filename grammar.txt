@@ -1,48 +1,39 @@
-mkey = {"if" : "a", "elif" : "b", "else" : "c", "for" : "d", "in" : "e", "while" : "f", "continue" : "g", "pass" : "h", "break" : "i", "class" : "j", "def" : "k", "return" : "l", "as" : "m", 
-"import" : "n", "from" : "o", "raise" : "p", "and" : "q", "or" : "r", "not" : "s", "is" : "t", "True" : "u", "False" : "v", "None" : "w", "with" : "A"}
-
-/* OPERATOR */
-equal -> '='
-Relasi -> is | '>' equal | '<' equal | equal equal | '!' equal | < | >
-Arithmetic -> + | - | * | / | * * | / / | %
-Bitwise -> '&' | '~' | '>' '>' | '<' '<' | '^' | '|'
-Assign -> equal | Arithmetic equal | Bitwise equal
-Logic -> and | or
-Member -> in | not space in
-Identity -> is | is space not
-
-/* BRACKET */
-square_open -> '['
-square_close -> ']'
-round_open -> '('
-round_close -> ')'
-curly_open -> '{'
-curly_close -> '}'
-
-/* SPACE and EOL */
-space -> " " | space space
-NL -> "\n" | NL NL
-
-/* BOOL */
-false -> "False"
-true -> "True"
-none -> "None"
-
-/* and or etc */
-and -> "and"
-or -> "or"
-not -> "not"
-is -> "is"
-in -> "in"
-
-/* DEF and PASS*/
-
-/* CONDITIONAL */
-
-/* LOOP */
-
-/* IMPORT and WITH */
-
-/* CLASS */
-
-/* RAISE */
+Terminals:
++ - * / % number variable , and or not true false none : ( ) [ ] { } ! = > < is string " ' str float int double if elif else while for in range def break pass continue return raise class import as range with open from
+Variables:
+S V VAR VALUE BOOLEAN OP EXPRESSION RELATION PRINT INPUT STRING ARRAY DICT DICT_CONTENT TYPE COMMENT BODY IF ELIF ELSE WHILE WHILE_HEADER FOR FOR_HEADER RANGE DEF BREAK PASS CONTINUE RETURN RAISE CLASS CLASS_HEADER IMPORT WITH FROM 
+Productions:
+S -> S S | IF | PRINT | WHILE | FOR | DEF | CLASS | IMPORT | FROM | COMMENT | BREAK | CONTINUE | WITH | PASS | VAR = V | VAR + = V | VAR - = V | VAR * = V | VAR / = V | VAR % = V | VAR / / = V | VAR * * = V; 
+VAR -> variable | variable , variable;
+VALUE -> number | BOOLEAN | STRING | ARRAY | DICT | V OP V | ( V ) | none;
+V ->  VAR | VALUE | INPUT | V , V | WITH;
+BOOLEAN -> BOOLEAN and BOOLEAN | BOOLEAN or BOOLEAN | not BOOLEAN | V RELATION V | true | false;
+OP -> + | - | * | / | / / | * * | %;
+EXPRESSION -> BOOLEAN | ( BOOLEAN );
+RELATION -> > = | < = | = = | ! = | < | > | is | is not | in | not in;
+STRING -> STRING + STRING | " string " | ' string ';
+ARRAY -> [ V ] | [ ] | [ V for VAR in V ] | [ V for VAR in RANGE ];
+DICT -> { } | { DICT_CONTENT };
+DICT_CONTENT -> V : V | DICT_CONTENT , DICT_CONTENT;
+TYPE -> str | float | int | double;
+BODY -> VAR | BODY BODY;
+COMMENT -> " " " BODY " " " | ' ' ' BODY ' ' ';
+IF -> if EXPRESSION : S | IF ELIF | IF ELSE | IF RAISE;
+ELIF -> elif EXPRESSION : S | ELIF ELIF | ELIF ELSE;
+ELSE -> else : S;
+WHILE_HEADER -> while EXPRESSION :;
+WHILE ->  WHILE_HEADER S;
+FOR_HEADER -> for VAR in STRING : | for VAR in RANGE : | for VAR in ( ARRAY ) : | for VAR in ( DICT ) :;
+FOR -> FOR_HEADER S;
+RANGE -> range ( V );
+DEF -> def VAR ( V ) : S | def VAR ( ) : S | DEF RETURN;
+BREAK -> FOR break | FOR_HEADER break | WHILE_HEADER break | WHILE break;
+PASS -> pass;
+CONTINUE -> FOR continue | FOR_HEADER continue | WHILE_HEADER continue | WHILE continue;
+RETURN -> return BOOLEAN | return VALUE;
+RAISE -> raise ( V ) | raise ( );
+CLASS_HEADER -> class VAR : | class VAR ( V ) : | class VAR ( ) :;
+CLASS -> CLASS_HEADER S;
+IMPORT -> import VAR as VAR | import VAR;
+WITH -> with open ( V ) as VAR : S | with open ( ) as VAR : S;
+FROM -> from VAR IMPORT
