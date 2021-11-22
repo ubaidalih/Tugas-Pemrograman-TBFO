@@ -87,6 +87,16 @@ def unit_routine(rules, variables):
 	
 	return result
 
+def prodToDict(productions):
+	dictionary = {}
+	for production in productions :
+		if(production[left] in dictionary.keys()):
+			dictionary[production[left]].append(production[right])
+		else :
+			dictionary[production[left]] = []
+			dictionary[production[left]].append(production[right])
+	return dictionary
+
 def CFGtoCNF(productions, variables):
 	#Membuat start production baru
 	variables.append('S0')
@@ -166,9 +176,9 @@ K, V, Productions = loadModel( modelPath )
 # print(Productions)
 
 Productions = CFGtoCNF(Productions, V)
-
-print(Productions)	
+	
 print( displayCNF(Productions) )
+print(prodToDict(Productions))
 print( len(Productions) )
 open('out.txt', 'w').write(	displayCNF(Productions) )
 
