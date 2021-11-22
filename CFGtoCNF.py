@@ -167,18 +167,18 @@ for nonTerminal in V:
 if len(sys.argv) > 1:
 	modelPath = str(sys.argv[1])
 else:
-	modelPath = 'model.txt'
+	modelPath = 'grammar.txt'
 
 K, V, Productions = loadModel( modelPath )
 
 # print(K)
 # print(V)
-# print(Productions)
+print(Productions)
 
-Productions = CFGtoCNF(Productions, V)
+# Productions = CFGtoCNF(Productions, V)
 	
-print( displayCNF(Productions) )
-print(prodToDict(Productions))
-print( len(Productions) )
-open('out.txt', 'w').write(	displayCNF(Productions) )
+# print( displayCNF(Productions) )
+# print(prodToDict(Productions))
+# print( len(Productions) )
+# open('out.txt', 'w').write(	displayCNF(Productions) )
 

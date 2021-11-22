@@ -1,12 +1,12 @@
 Terminals:
 + - * / % number variable , and or not true false none : ( ) [ ] { } ! = > < is string " ' str float int double if elif else while for in range def break pass continue return raise class import as range with open from
 Variables:
-S V VAR VALUE BOOLEAN OP EXPRESSION RELATION PRINT INPUT STRING ARRAY DICT DICT_CONTENT TYPE COMMENT BODY IF ELIF ELSE WHILE WHILE_HEADER FOR FOR_HEADER RANGE DEF BREAK PASS CONTINUE RETURN RAISE CLASS CLASS_HEADER IMPORT WITH FROM 
+S V VAR VALUE BOOLEAN OP EXPRESSION RELATION STRING ARRAY DICT DICT_CONTENT TYPE COMMENT BODY IF ELIF ELSE WHILE WHILE_HEADER FOR FOR_HEADER RANGE DEF BREAK PASS CONTINUE RETURN RAISE CLASS CLASS_HEADER IMPORT WITH FROM 
 Productions:
-S -> S S | IF | PRINT | WHILE | FOR | DEF | CLASS | IMPORT | FROM | COMMENT | BREAK | CONTINUE | WITH | PASS | VAR = V | VAR + = V | VAR - = V | VAR * = V | VAR / = V | VAR % = V | VAR / / = V | VAR * * = V; 
+S -> S S | IF | WHILE | FOR | DEF | CLASS | IMPORT | FROM | COMMENT | BREAK | CONTINUE | WITH | PASS | VAR = V | VAR + = V | VAR - = V | VAR * = V | VAR / = V | VAR % = V | VAR / / = V | VAR * * = V; 
 VAR -> variable | variable , variable;
 VALUE -> number | BOOLEAN | STRING | ARRAY | DICT | V OP V | ( V ) | none;
-V ->  VAR | VALUE | INPUT | V , V | WITH;
+V ->  VAR | VALUE | V , V;
 BOOLEAN -> BOOLEAN and BOOLEAN | BOOLEAN or BOOLEAN | not BOOLEAN | V RELATION V | true | false;
 OP -> + | - | * | / | / / | * * | %;
 EXPRESSION -> BOOLEAN | ( BOOLEAN );
@@ -35,5 +35,5 @@ RAISE -> raise ( V ) | raise ( );
 CLASS_HEADER -> class VAR : | class VAR ( V ) : | class VAR ( ) :;
 CLASS -> CLASS_HEADER S;
 IMPORT -> import VAR as VAR | import VAR;
-WITH -> with open ( V ) as VAR : S | with open ( ) as VAR : S;
+WITH -> with open ( V ) as VAR : S;
 FROM -> from VAR IMPORT
