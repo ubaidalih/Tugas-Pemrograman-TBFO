@@ -1,0 +1,12 @@
+print("testing apa aja")
+print(testestest())
+test = 2
+
+''' tes tes tes tes
+'''
+if true:
+    apa += 12
+elif(true == true):
+    print('hah')
+else:
+    aaaa -= 12
