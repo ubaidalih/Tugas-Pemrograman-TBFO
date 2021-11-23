@@ -21,7 +21,7 @@ def loadModel(modelPath):
 
 	return K, V, newP
 
-def seekAndDestroy(target, productions):
+def deleteTerminals(target, productions):
 	trash, erased = [],[]
 	for production in productions:
 		if target in production[right] and len(production[right]) == 1:
@@ -138,7 +138,7 @@ def CFGtoCNF(productions, variables):
 	productions = result
 	#Menghapus non-terminal rules
 	newSet = []
-	outlaws, productions = seekAndDestroy(target='e', productions=productions)
+	outlaws, productions = deleteTerminals(target='e', productions=productions)
 	for outlaw in outlaws:
 		for production in productions + [e for e in newSet if e not in productions]:
 			if outlaw in production[right]:
