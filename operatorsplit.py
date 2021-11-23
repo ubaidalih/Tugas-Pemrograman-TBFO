@@ -2,11 +2,11 @@ import re
 
 def splitOperator(filename):
     f = open(filename, "r")
-    input = f.read()
+    inputfile = f.read()
     f.close()
 
     # split the target string on the occurance of one or more whitespace characters
-    output = re.split(r'\s+', input)
+    output = re.split(r'\s+', inputfile)
     #print(output)
 
     operator = ['=', '!=', '==', '>=', '<=', '<', '>', ':', ',', '/', '-', r'\+', r'\*', r'\*\*', r'\'', r'\"', r'\'\'\'', r'\(', r'\)', 'none', 'not', 'true', 'false', r'\{', r'\}', r'\[', r'\]', 'for', '#', 'elif', 'else', 'while', 'break', 'continue', 'pass', 'def', 'return', 'range', 'raise', 'class', 'from', 'import', 'with', 'open', 'print']
@@ -27,6 +27,7 @@ def splitOperator(filename):
         if statement == '':
             output.remove(statement)
 
+    # split the variables
     temp = []
     for statement in output:
         if statement in operator:
@@ -39,6 +40,3 @@ def splitOperator(filename):
                 temp.extend(split)
             
     return temp
-
-tes = splitOperator("tes.txt")
-print(tes)
