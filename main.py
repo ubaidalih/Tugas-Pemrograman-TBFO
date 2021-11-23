@@ -46,7 +46,7 @@ if len(sys.argv) > 1:
 else:
 	modelPath = 'grammar.txt'
 K, V, Productions = CFGtoCNF.loadModel( modelPath )
-Productions = CFGtoCNF.CFGtoCNF(Productions, V,K,V,variablesJar)
+Productions = CFGtoCNF.CFGtoCNF(Productions,V,K,variablesJar)
 cnfGram = CFGtoCNF.prodToDict(Productions)
 open('out.txt', 'w').write(	CFGtoCNF.displayCNF(Productions) )
 
