@@ -96,22 +96,22 @@ def prodToDict(productions):
 			dictionary[production[left]].append(production[right])
 	return dictionary
 
-def CFGtoCNF(productions,variables,K,V,variablesJar):
+def CFGtoCNF(productions,variables,terminals,variablesJar):
 	#Membuat start production baru
 	variables.append('S0')
 	productions = [('S0', [variables[0]])] + productions
 	#Menghilangkan rules yang mengandung variabel dan terminal sekaligus
 	newProductions = []
-	dictionary = setupDict(productions, variables, terms=K)
+	dictionary = setupDict(productions, variables, terminals)
 	for production in productions:
-		if isSimple(K,V,production):
+		if isSimple(terminals,variables,production):
 			newProductions.append(production)
 		else:
-			for term in K:
+			for term in terminals:
 				for index, value in enumerate(production[right]):
 					if term == value and not term in dictionary:
 						dictionary[term] = variablesJar.pop()
-						V.append(dictionary[term])
+						variables.append(dictionary[term])
 						newProductions.append( (dictionary[term], [term]) )
 						production[right][index] = dictionary[term]
 					elif term == value:
