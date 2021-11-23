@@ -1,5 +1,5 @@
 def do_something(x):
-    ''' This a sample multiline comment
+    ''' This is a sample multiline comment
     '''
     if x == 0:
         return 0
