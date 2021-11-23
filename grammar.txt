@@ -34,7 +34,7 @@ VAR_FIRST -> ALPHABET | UNDERSCORE;
 ALPHANUM -> ALPHANUM ALPHANUM | DIGIT | VAR_FIRST;
 VAR -> VAR_FIRST ALPHANUM | VAR_FIRST;
 NUMBER -> NUMBER NUMBER | DIGIT;
-STRING_WORD -> STRING_WORD STRING_WORD | ALPHABET | DIGIT | OTHER | EQUAL | GREAT EQUAL | LESS EQUAL | EQUAL EQUAL | SERU EQUAL | LESS | GREAT | COLON | COMMA | DIVIDE | MIN | PLUS | MUL | PETIK1 | PETIK2 | NBO | NBC | and | or | none | not | true | false | CBO | CBC | SBC | SBO | is | in | for | HASHTAG | if | elif | else | while | break | continue | pass | def | return | range | raise | class | from | import | with | open | as;
+STRING_WORD -> STRING_WORD STRING_WORD | ALPHABET | DIGIT | OTHER;
 VALUE -> NUMBER | BOOLEAN | STRING | ARRAY | DICT | VV OP VV | NBO VV NBC | none;
 VV -> VV COMMA VV | VALUE | VAR;
 BOOLEAN -> BOOLEAN and BOOLEAN | BOOLEAN or BOOLEAN | not BOOLEAN | VV RELATION VV | true | false;
