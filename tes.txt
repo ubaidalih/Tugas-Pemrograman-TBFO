@@ -1,0 +1,23 @@
+aaa=0
+if(true):
+    aas+=1
+elif(true == true):
+    pass
+if(a > 4):
+    a = 3
+elif(a < 4 and a > 1):
+    a-=9
+else:
+    a-=1
+while(true):
+    g = 2
+for i in "asdfg" :
+    a+=1
+
+def gon(art):
+    x+=7
+
+import matplotlib
+from matplotlib import numpy
+from matplotlib import numpy as np
+
