@@ -23,15 +23,15 @@ def loadModel(modelPath):
 
 	return K, V, newP
 
-def seekAndDestroy(target, productions):
-	trash, erased = [],[]
-	for production in productions:
-		if target in production[right] and len(production[right]) == 1:
-			trash.append(production[left])
-		else:
-			erased.append(production)
+# def deleteTerminals(target, productions):
+# 	trash, erased = [],[]
+# 	for production in productions:
+# 		if target in production[right] and len(production[right]) == 1:
+# 			trash.append(production[left])
+# 		else:
+# 			erased.append(production)
 			
-	return trash, erased
+# 	return trash, erased
  
 def setupDict(productions, variables, terms):
 	result = {}
@@ -139,13 +139,13 @@ def CFGtoCNF(productions, variables):
 			result.append( (newVar+str(k-2), production[right][k-2:k]) ) 
 	productions = result
 	#Menghapus non-terminal rules
-	newSet = []
-	outlaws, productions = seekAndDestroy(target='e', productions=productions)
-	for outlaw in outlaws:
-		for production in productions + [e for e in newSet if e not in productions]:
-			if outlaw in production[right]:
-				newSet = newSet + [e for e in  rewrite(outlaw, production) if e not in newSet]
-	productions = newSet + ([productions[i] for i in range(len(productions)) if productions[i] not in newSet])
+	# newSet = []
+	# outlaws, productions = deleteTerminals(target='e', productions=productions)
+	# for outlaw in outlaws:
+	# 	for production in productions + [e for e in newSet if e not in productions]:
+	# 		if outlaw in production[right]:
+	# 			newSet = newSet + [e for e in  rewrite(outlaw, production) if e not in newSet]
+	# productions = newSet + ([productions[i] for i in range(len(productions)) if productions[i] not in newSet])
 	#Mengecek unitary rules
 	i = 0
 	result = unit_routine(productions, variables)
