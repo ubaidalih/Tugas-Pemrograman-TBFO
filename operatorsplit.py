@@ -9,7 +9,7 @@ def splitOperator(filename):
     output = re.split(r'\s+', input)
     #print(output)
 
-    operator = ['=', '!=', '==', '>=', '<=', '<', '>', ':', ',', '/', '-', r'\+', r'\*', r'\*\*', r'\'', r'\"', r'\'\'\'', r'\(', r'\)']
+    operator = ['=', '!=', '==', '>=', '<=', '<', '>', ':', ',', '/', '-', r'\+', r'\*', r'\*\*', r'\'', r'\"', r'\'\'\'', r'\(', r'\)', 'none', 'and', 'not', 'true', 'false', r'\{', r'\}', r'\[', r'\]', 'for', '#', 'elif', 'else', 'while', 'break', 'continue', 'pass', 'def', 'return', 'range', 'raise', 'class', 'from', 'import', 'with', 'open', 'print']
     
     # split the target string with the following pattern
     for oper in operator:
@@ -27,6 +27,18 @@ def splitOperator(filename):
         if statement == '':
             output.remove(statement)
 
-    return output
+    temp = []
+    for statement in output:
+        if statement in operator:
+            temp.append(statement)
+        else:
+            if statement == 'as' or statement == 'is' or statement == 'or' or statement == 'in' or statement == 'if':
+                temp.append(statement)
+            else:
+                split = list(statement)
+                temp.extend(split)
+            
+    return temp
 
-print(splitOperator("tes.txt"))
+tes = splitOperator("tes.txt")
+print(tes)
