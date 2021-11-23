@@ -5,29 +5,28 @@ def splitOperator(filename):
     input = f.read()
     f.close()
 
-    input = input.split()
-    output = input
+    # split the target string on the occurance of one or more whitespace characters
+    output = re.split(r'\s+', input)
+    #print(output)
 
     operator = ['=', '!=', '==', '>=', '<=', '<', '>', ':', ',', '/', '-', r'\+', r'\*', r'\*\*', r'\'', r'\"', r'\'\'\'', r'\(', r'\)']
     
+    # split the target string with the following pattern
     for oper in operator:
         temp = []    
         for statement in output:
-            splitting = r'[A..z]*(' + oper + r')[A..z]*'
-            elmt = re.split(splitting, statement)
+            elmt = re.split(r'[A..z]*(' + oper + r')[A..z]*', statement)
             
             for splitted in elmt:
                 temp.append(splitted) 
         output = temp
+    #print(output)
 
-    temp = []
+    # remove the blank characters from the output
     for statement in output:
-        checkStrip = statement.split()
-        for splitted in checkStrip: 
-            temp.append(splitted)
+        if statement == '':
+            output.remove(statement)
 
-    output = temp
-    output = [string for string in output]
-    print(output)
+    return output
 
-splitOperator("tes.txt")
+print(splitOperator("tes.txt"))
