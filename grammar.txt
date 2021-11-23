@@ -1,10 +1,10 @@
 Terminals:
-+ - * / % number variable , and or not true false none : ( ) [ ] { } ! = > < is string " ' str float int double if elif else while for in range def break pass continue return raise class import as range with open from
+variable number ( ) none , and or not true false + - * / % = < > ! is in " ' [ ] { } for : # if elif else while break continue pass def return range raise class from import as * with open
 Variables:
-S V VAR VALUE BOOLEAN OP EXPRESSION RELATION STRING ARRAY DICT DICT_CONTENT TYPE COMMENT BODY IF ELIF ELSE WHILE WHILE_HEADER FOR FOR_HEADER RANGE DEF BREAK PASS CONTINUE RETURN RAISE CLASS CLASS_HEADER IMPORT WITH FROM 
+S VAR VALUE V BOOLEAN EXPRESSION RELATION STRING ARRAY DICT_CONTENT DICT BODY COMMENT IF_HEADER IF ELIF_HEADER ELIF ELSE WHILE WHILE_HEADER FOR_HEADER FOR FOR_VAR ITERABLE ITERATE CONTINUE BREAK PASS DEF_HEADER DEF_S DEF RETURN FUNC_BODY IF_FUNC ELIF_FUNC ELSE_FUNC WHILE_FUNC FOR_FUNC WITH_FUNC ITERATE_FUNC BREAK_FUNC CONTINUE_FUNC RAISE CLASS CLASS_HEADER CLASS_S IMP_S IMPORT WITH WITH_HEADER
 Productions:
-S -> S S | IF | WHILE | FOR | DEF | CLASS | IMPORT | FROM | COMMENT | BREAK | CONTINUE | WITH | PASS | VAR = V | VAR + = V | VAR - = V | VAR * = V | VAR / = V | VAR % = V | VAR / / = V | VAR * * = V; 
-VAR -> variable | variable , variable;
+S -> S S | IF | WHILE | FOR | CLASS | DEF | IMPORT | RAISE | COMMENT | BREAK | CONTINUE | WITH | PASS | VAR = V | VAR OP = V | none;
+VAR -> variable;
 VALUE -> number | BOOLEAN | STRING | ARRAY | DICT | V OP V | ( V ) | none;
 V ->  VAR | VALUE | V , V;
 BOOLEAN -> BOOLEAN and BOOLEAN | BOOLEAN or BOOLEAN | not BOOLEAN | V RELATION V | true | false;
@@ -15,25 +15,42 @@ STRING -> STRING + STRING | " string " | ' string ';
 ARRAY -> [ V ] | [ ] | [ V for VAR in V ] | [ V for VAR in RANGE ];
 DICT -> { } | { DICT_CONTENT };
 DICT_CONTENT -> V : V | DICT_CONTENT , DICT_CONTENT;
-TYPE -> str | float | int | double;
 BODY -> VAR | BODY BODY;
-COMMENT -> " " " BODY " " " | ' ' ' BODY ' ' ';
-IF -> if EXPRESSION : S | IF ELIF | IF ELSE | IF RAISE;
-ELIF -> elif EXPRESSION : S | ELIF ELIF | ELIF ELSE;
+COMMENT -> " " " BODY " " " | ' ' ' BODY ' ' ' | # BODY;
+IF_HEADER -> if EXPRESSION :;
+IF -> IF_HEADER S | IF ELIF | IF ELSE;
+ELIF_HEADER -> elif EXPRESSION :;
+ELIF ->  ELIF_HEADER S | ELIF ELIF | ELIF ELSE;
 ELSE -> else : S;
 WHILE_HEADER -> while EXPRESSION :;
 WHILE ->  WHILE_HEADER S;
-FOR_HEADER -> for VAR in STRING : | for VAR in RANGE : | for VAR in ( ARRAY ) : | for VAR in ( DICT ) :;
+FOR_HEADER -> for FOR_VAR in ITERABLE :;
+FOR_VAR -> VAR | VAR , FOR_VAR;
+ITERABLE -> range ( V ) | ( DICT ) | DICT | ( ARRAY ) | ARRAY | STRING;
 FOR -> FOR_HEADER S;
-RANGE -> range ( V );
-DEF -> def VAR ( V ) : S | def VAR ( ) : S | DEF RETURN;
-BREAK -> FOR break | FOR_HEADER break | WHILE_HEADER break | WHILE break;
+ITERATE -> FOR_HEADER | WHILE_HEADER | FOR | WHILE;
+BREAK -> ITERATE break | ITERATE break S;
+CONTINUE -> ITERATE continue | ITERATE continue S;
 PASS -> pass;
-CONTINUE -> FOR continue | FOR_HEADER continue | WHILE_HEADER continue | WHILE continue;
-RETURN -> return BOOLEAN | return VALUE;
+DEF_HEADER -> def VAR ( V ) : | def VAR ( ) :;
+DEF_S -> DEF_S DEF_S | FUNC_BODY;
+FUNC_BODY -> FUNC_BODY FUNC_BODY | IF_FUNC | FOR_FUNC | WHILE_FUNC | CONTINUE_FUNC | BREAK_FUNC | CLASS | DEF | VAR = V | VAR OP = V | IMPORT | RAISE | WITH_FUNC | PASS | RETURN | none;
+DEF -> DEF_HEADER DEF_S | DEF_HEADER DEF_S;
+RETURN -> return BOOLEAN | return VALUE | return;
+IF_FUNC -> IF_HEADER FUNC_BODY | IF_FUNC ELIF_FUNC | IF_FUNC ELSE_FUNC;
+ELIF_FUNC -> ELIF_HEADER FUNC_BODY | ELIF_FUNC ELIF_FUNC | ELIF_FUNC ELSE_FUNC;
+ELSE_FUNC -> else : FUNC_BODY;
+FOR_FUNC -> FOR_HEADER FUNC_BODY;
+WHILE_FUNC -> WHILE_HEADER FUNC_BODY;
+ITERATE_FUNC -> FOR_FUNC | WHILE_FUNC | WHILE_HEADER | FOR_HEADER;
+CONTINUE_FUNC -> ITERATE_FUNC continue | ITERATE_FUNC continue FUNC_BODY;
+BREAK_FUNC -> ITERATE_FUNC break | ITERATE_FUNC break FUNC_BODY;
+WITH_FUNC -> WITH_HEADER FUNC_BODY;
 RAISE -> raise ( V ) | raise ( );
 CLASS_HEADER -> class VAR : | class VAR ( V ) : | class VAR ( ) :;
-CLASS -> CLASS_HEADER S;
-IMPORT -> import VAR as VAR | import VAR;
-WITH -> with open ( V ) as VAR : S;
-FROM -> from VAR IMPORT
+CLASS_S -> CLASS_S CLASS_S | IF | WHILE | FOR | CLASS | DEF | VAR = V | VAR OP = V | BREAK | CONTINUE | PASS;
+CLASS -> CLASS_HEADER CLASS_S;
+IMPORT -> from VAR import IMP_S | import VAR as VAR | import VAR;
+IMP_S -> * | VAR as VAR | VAR;
+WITH_HEADER -> with open ( V ) as VAR :;
+WITH -> WITH_HEADER S
