@@ -13,7 +13,7 @@ def splitOperator(filename):
         if statement != '':
             output.append(statement)
             
-    # print(output)
+
 
     operator = ['=', '!=', '==', '>=', '<=', '<', '>', ':', ',', '/', '-', r'\+', r'\*', r'\*\*', r'\'', r'\"', r'\'\'\'', r'\(', r'\)', 'none', 'not', 'true', 'false', r'\{', r'\}', r'\[', r'\]', 'for', '#', 'elif', 'else', 'while', 'break', 'continue', 'pass', 'def', 'return', 'range', 'raise', 'class', 'from', 'import', 'with', '%', '\n']
     operator2 = ['=', '!=', '==', '>=', '<=', '<', '>', ':', ',', '/', '-', '+', '*', '**', "'", '"', '(', ')', 'none', 'not', 'true', 'false', '{', '}', '[', ']', 'for', '#', 'elif', 'else', 'while', 'break', 'continue', 'pass', 'def', 'return', 'range', 'raise', 'class', 'from', 'import', 'with', '%', '\n']
@@ -38,8 +38,6 @@ def splitOperator(filename):
             if statement == 'as' or statement == 'is' or statement == 'or' or statement == 'in' or statement == 'if' or statement == 'and':
                 temp.append(statement)
             else:
-                # split = list(statement)
-                # temp.extend(split)
                 if(fa.isVariable(statement)):
                     temp.append('a')
                 elif(fa.isNumber(statement)):
@@ -50,6 +48,3 @@ def splitOperator(filename):
         if temp[i] == '\n':
             temp[i] = 'newline'
     return temp,valid
-
-# splitOperator("tes.py")
-# print(tes)

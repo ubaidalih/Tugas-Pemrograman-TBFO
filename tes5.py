@@ -4,7 +4,6 @@ importasd opencv as op
 for i in range():
     while :
         if 1 > 0;
-            # ini comment
             break::
         elf x < x:
             pass

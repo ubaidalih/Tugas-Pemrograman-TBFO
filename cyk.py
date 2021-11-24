@@ -17,8 +17,6 @@ def cyk(w,cnfGram):
                         if len(prod) == 2 :
                             if(prod[0] in dp[i][k]) and (prod[1] in dp[k+1][j]):
                                 dp[i][j].add(var[0])
-    # print(dp)
-    # print(dp[0][n-1])
     if "S0" in dp[0][n-1] :
         print("Accepted Answer! :D")
     else :
