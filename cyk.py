@@ -21,7 +21,5 @@ def cyk(w,cnfGram):
     # print(dp[0][n-1])
     if "S0" in dp[0][n-1] :
         print("Accepted Answer! :D")
-        #return True
     else :
         print("Syntax Error :(")
-        #return False

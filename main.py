@@ -41,8 +41,8 @@ variablesJar = ["A1", "B1", "C1", "D1", "E1", "F1", "G1", "H1", "I1", "J1", "K1"
 for nonTerminal in V:
 	if nonTerminal in variablesJar:
 		variablesJar.remove(nonTerminal)
-if len(sys.argv) > 1:
-	modelPath = str(sys.argv[1])
+if len(sys.argv) > 2:
+	modelPath = str(sys.argv[2])
 else:
 	modelPath = 'grammar.txt'
 K, V, Productions = CFGtoCNF.loadModel( modelPath )
@@ -50,6 +50,9 @@ Productions = CFGtoCNF.CFGtoCNF(Productions,V,K,variablesJar)
 cnfGram = CFGtoCNF.prodToDict(Productions)
 open('out.txt', 'w').write(	CFGtoCNF.displayCNF(Productions) )
 
-output,valid = spl.splitOperator("tes.txt")
+filename = sys.argv[1]
+print("Compiling...")
+
+output,valid = spl.splitOperator(filename)
 if(valid):
 	cyk.cyk(output,cnfGram)
