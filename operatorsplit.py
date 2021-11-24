@@ -10,7 +10,8 @@ def splitOperator(filename):
     output = re.split(r'\s+', inputfile)
     #print(output)
 
-    operator = ['!=', '==', '>=', '<=', '<', '>', ':', ',', '/', '-', r'\+', r'\*', r'\*\*', r'\'', r'\"', r'\'\'\'', r'\(', r'\)', 'none', 'not', 'true', 'false', r'\{', r'\}', r'\[', r'\]', 'for', '#', 'elif', 'else', 'while', 'break', 'continue', 'pass', 'def', 'return', 'range', 'raise', 'class', 'from', 'import', 'with', 'open', 'print']
+    operator = ['=', '!=', '==', '>=', '<=', '<', '>', ':', ',', '/', '-', r'\+', r'\*', r'\*\*', r'\'', r'\"', r'\'\'\'', r'\(', r'\)', 'none', 'not', 'true', 'false', r'\{', r'\}', r'\[', r'\]', 'for', '#', 'elif', 'else', 'while', 'break', 'continue', 'pass', 'def', 'return', 'range', 'raise', 'class', 'from', 'import', 'with', 'open', 'print']
+    operator2 = ['=', '!=', '==', '>=', '<=', '<', '>', ':', ',', '/', '-', '+', '*', '**', "'", '"', '(', ')', 'none', 'not', 'true', 'false', '{', '}', '[', ']', 'for', '#', 'elif', 'else', 'while', 'break', 'continue', 'pass', 'def', 'return', 'range', 'raise', 'class', 'from', 'import', 'with', 'open', 'print']
     
     # split the target string with the following pattern
     for oper in operator:
@@ -21,32 +22,32 @@ def splitOperator(filename):
             for splitted in elmt:
                 temp.append(splitted) 
         output = temp
-    #print(output)
+    print(output)
 
-    # remove the blank characters from the output
-    for statement in output:
-        if statement == '':
-            output.remove(statement)
-
-    # split the variables
+    # checking list
     temp = []
     for statement in output:
-        if statement in operator:
+        print(statement)
+        if statement in operator2:
             temp.append(statement)
         else:
             if statement == 'as' or statement == 'is' or statement == 'or' or statement == 'in' or statement == 'if' or statement == 'and':
                 temp.append(statement)
             else:
-                split = list(statement)
-                temp.extend(split)
-                # print(statement)
-                # if(fa.isVariable(statement)):
-                #     split = list(statement)
-                #     temp.extend(split)
-                # elif(fa.isNumber(statement)):
-                #     split = list(statement)
-                #     temp.extend(split)
-                # else :
-                #     print("Variable Name Error")
+                # split = list(statement)
+                # temp.extend(split)
+                if(fa.isVariable(statement)):
+                    split = list(statement)
+                    temp.extend(split)
+                elif(fa.isNumber(statement)):
+                    split = list(statement)
+                    temp.extend(split)
+                elif statement == '':
+                    continue
+                else :
+                    print("Variable Name Error")
             
     return temp
+
+tes = splitOperator("tes.txt")
+print(tes)
