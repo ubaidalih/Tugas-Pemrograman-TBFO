@@ -1,14 +1,13 @@
-def do_something(x):
-    ''' This is a sample multiline comment
-    '''
-    if x == 0:
-        return 0
-    elif x + 4 == 1:
-        if true:
-            return 3
+import numpy as num
+import pandas as py
+import opencv as op
+for i in range():
+    while :
+        if 1 > 0;
+            # ini comment
+            break::
+        elf x < x:
+            pass
         else:
-            return 2
-    elif x == 32:
-        return 4
-    else:
-        return "Doodoo"
+            print("ini print)
+            print()
