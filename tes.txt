@@ -1,1 +1,1 @@
-hajkfgjkstfayskf = 2
+x = 'Yes' if fruit == 'Apple' else 'No'
