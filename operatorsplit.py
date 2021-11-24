@@ -22,12 +22,11 @@ def splitOperator(filename):
             for splitted in elmt:
                 temp.append(splitted) 
         output = temp
-    print(output)
 
     # checking list
     temp = []
+    valid = True
     for statement in output:
-        print(statement)
         if statement in operator2:
             temp.append(statement)
         else:
@@ -45,9 +44,11 @@ def splitOperator(filename):
                 elif statement == '':
                     continue
                 else :
-                    print("Variable Name Error")
+                    valid = False
+                    print("Variable/Function Name Error")
+                    break
             
-    return temp
+    return temp,valid
 
-tes = splitOperator("tes.txt")
-print(tes)
+# tes = splitOperator("tes.txt")
+# print(tes)

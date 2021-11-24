@@ -50,5 +50,6 @@ Productions = CFGtoCNF.CFGtoCNF(Productions,V,K,variablesJar)
 cnfGram = CFGtoCNF.prodToDict(Productions)
 open('out.txt', 'w').write(	CFGtoCNF.displayCNF(Productions) )
 
-output = spl.splitOperator("tes.txt")
-cyk.cyk(output,cnfGram)
+output,valid = spl.splitOperator("tes.txt")
+if(valid):
+	cyk.cyk(output,cnfGram)

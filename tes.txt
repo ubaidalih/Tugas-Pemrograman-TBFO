@@ -1,5 +1,5 @@
 def do_something(x):
-    if x == 0 + 1 :
+    if 1x == 0 + 1 :
         return 0
     elif x + 4 == 1:
         x = 1
