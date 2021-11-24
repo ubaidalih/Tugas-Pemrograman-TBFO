@@ -44,11 +44,11 @@ for nonTerminal in V:
 if len(sys.argv) > 2:
 	modelPath = str(sys.argv[2])
 else:
-	modelPath = 'grammar.txt'
+	modelPath = 'grammar2.txt'
 K, V, Productions = CFGtoCNF.loadModel( modelPath )
 Productions = CFGtoCNF.CFGtoCNF(Productions,V,K,variablesJar)
 cnfGram = CFGtoCNF.prodToDict(Productions)
-open('out.txt', 'w').write(	CFGtoCNF.displayCNF(Productions) )
+open('out2.txt', 'w').write(	CFGtoCNF.displayCNF(Productions) )
 
 filename = sys.argv[1]
 print("Compiling...")

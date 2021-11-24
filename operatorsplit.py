@@ -9,7 +9,6 @@ def splitOperator(filename):
     output = []
     # split the target string on the occurance of one or more whitespace characters
     inputfile = inputfile.split(" ")
-    print(inputfile)
     for statement in inputfile:
         if statement != '':
             output.append(statement)
@@ -47,8 +46,10 @@ def splitOperator(filename):
                     temp.append('1')
                 elif statement == '':
                     continue
-            
-    return temp
+    for i in range(len(temp)):
+        if temp[i] == '\n':
+            temp[i] = 'newline'
+    return temp,valid
 
 # splitOperator("tes.py")
 # print(tes)
