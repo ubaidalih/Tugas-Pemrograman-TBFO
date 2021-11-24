@@ -38,15 +38,15 @@ def setupDict(productions, variables, terms):
 	return result
 
 
-def rewrite(target, production):
-	result = []
-	positions = [i for i,x in enumerate(production[right]) if x == target]
-	for i in range(len(positions)+1):
- 		for element in list(itertools.combinations(positions, i)):
- 			tadan = [production[right][i] for i in range(len(production[right])) if i not in element]
- 			if tadan != []:
- 				result.append((production[left], tadan))
-	return result
+# def rewrite(target, production):
+# 	result = []
+# 	positions = [i for i,x in enumerate(production[right]) if x == target]
+# 	for i in range(len(positions)+1):
+#  		for element in list(itertools.combinations(positions, i)):
+#  			tadan = [production[right][i] for i in range(len(production[right])) if i not in element]
+#  			if tadan != []:
+#  				result.append((production[left], tadan))
+# 	return result
 
 
 def displayCNF(rules):

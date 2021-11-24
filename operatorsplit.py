@@ -1,4 +1,5 @@
 import re
+import variable_fa as fa
 
 def splitOperator(filename):
     f = open(filename, "r")
@@ -9,7 +10,7 @@ def splitOperator(filename):
     output = re.split(r'\s+', inputfile)
     #print(output)
 
-    operator = ['=', '!=', '==', '>=', '<=', '<', '>', ':', ',', '/', '-', r'\+', r'\*', r'\*\*', r'\'', r'\"', r'\'\'\'', r'\(', r'\)', 'none', 'not', 'true', 'false', r'\{', r'\}', r'\[', r'\]', 'for', '#', 'elif', 'else', 'while', 'break', 'continue', 'pass', 'def', 'return', 'range', 'raise', 'class', 'from', 'import', 'with', 'open', 'print']
+    operator = ['!=', '==', '>=', '<=', '<', '>', ':', ',', '/', '-', r'\+', r'\*', r'\*\*', r'\'', r'\"', r'\'\'\'', r'\(', r'\)', 'none', 'not', 'true', 'false', r'\{', r'\}', r'\[', r'\]', 'for', '#', 'elif', 'else', 'while', 'break', 'continue', 'pass', 'def', 'return', 'range', 'raise', 'class', 'from', 'import', 'with', 'open', 'print']
     
     # split the target string with the following pattern
     for oper in operator:
@@ -38,5 +39,14 @@ def splitOperator(filename):
             else:
                 split = list(statement)
                 temp.extend(split)
+                # print(statement)
+                # if(fa.isVariable(statement)):
+                #     split = list(statement)
+                #     temp.extend(split)
+                # elif(fa.isNumber(statement)):
+                #     split = list(statement)
+                #     temp.extend(split)
+                # else :
+                #     print("Variable Name Error")
             
     return temp

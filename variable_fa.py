@@ -26,7 +26,25 @@ def state3(c):
     state = 3
     return state
 
-def isAccepted(s):
+def state4(c):
+    if(ord(c) >= 48 and ord(c) <= 57):
+        state = 5
+    else :
+        state = 6
+    return state
+
+def state5(c):
+    if(ord(c) >= 48 and ord(c) <= 57):
+        state = 5
+    else :
+        state = 6
+    return state
+
+def state6(c):
+    state = 6
+    return state
+
+def isVariable(s):
     state = 1
     for i in range (len(s)):
         if (state == 1):
@@ -40,9 +58,23 @@ def isAccepted(s):
     else :
         return False
 
-str = "123"
-if(isAccepted(str)):
-    print("Variable accepted")
-else:
-    print("Variable error")
+def isNumber(s):
+    state = 4
+    for i in range (len(s)):
+        if (state == 4):
+            state = state4(s[i])
+        if (state == 5):
+            state = state5(s[i])
+        if (state == 6):
+            state = state6(s[i])
+    if (state == 5):
+        return True
+    else :
+        return False
+
+# str = "12a"
+# if(isNumber(str)):
+#     print("Variable accepted")
+# else:
+#     print("Variable error")
         
