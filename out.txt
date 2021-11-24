@@ -4,7 +4,7 @@ B11 -> OP B12
 B12 -> EQUAL VV
 ALPHABET -> a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z | A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q | R | S | T | U | V | W | X | Y | Z
 DIGIT -> 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
-OTHER -> $ | & | . | ? | @ | \ | ^ | ` | ~ | |
+OTHER -> $ | & | . | ? | @ | \ | ^ | ` | ~ | | | ! | # | % | ( | ) | * | + | - | , | / | : | < | = | > | [ | ] | _ | { | } | ' | "
 SERU -> !
 HASHTAG -> #
 PERSEN -> %
@@ -31,7 +31,7 @@ PETIK2 -> "
 ALPHANUM -> ALPHANUM ALPHANUM | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z | A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q | R | S | T | U | V | W | X | Y | Z | _
 VAR -> VAR_FIRST ALPHANUM | a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z | A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q | R | S | T | U | V | W | X | Y | Z | _
 NUMBER -> NUMBER NUMBER | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
-STRING_WORD -> STRING_WORD STRING_WORD | is | a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z | A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q | R | S | T | U | V | W | X | Y | Z | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | $ | & | . | ? | @ | \ | ^ | ` | ~ | |
+STRING_WORD -> STRING_WORD STRING_WORD | is | a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z | A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q | R | S | T | U | V | W | X | Y | Z | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | $ | & | . | ? | @ | \ | ^ | ` | ~ | | | ! | # | % | ( | ) | * | + | - | , | / | : | < | = | > | [ | ] | _ | { | } | ' | "
 VALUE -> VV C11 | NBO D11 | none | NUMBER NUMBER | BOOLEAN F11 | BOOLEAN G11 | X5 BOOLEAN | VV H11 | true | false | STRING STRING | PETIK2 J11 | PETIK1 K11 | SBO L11 | SBO SBC | SBO M11 | SBO N11 | CBO CBC | CBO O11 | VAR E21 | VAR F21 | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
 C11 -> OP VV
 D11 -> VV NBC
@@ -68,7 +68,7 @@ O11 -> DICT_CONTENT CBC
 DICT_CONTENT -> VV P11 | DICT_CONTENT Q11
 P11 -> COLON VV
 Q11 -> COMMA DICT_CONTENT
-BODY -> BODY BODY | STRING_WORD STRING_WORD | is | a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z | A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q | R | S | T | U | V | W | X | Y | Z | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | $ | & | . | ? | @ | \ | ^ | ` | ~ | |
+BODY -> BODY BODY | STRING_WORD STRING_WORD | is | a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z | A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q | R | S | T | U | V | W | X | Y | Z | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | $ | & | . | ? | @ | \ | ^ | ` | ~ | | | ! | # | % | ( | ) | * | + | - | , | / | : | < | = | > | [ | ] | _ | { | } | ' | "
 COMMENT -> PETIK2 R11 | PETIK1 S11 | HASHTAG BODY
 R11 -> PETIK2 R12
 R12 -> PETIK2 R13

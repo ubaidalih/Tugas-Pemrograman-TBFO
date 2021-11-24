@@ -6,7 +6,7 @@ Productions:
 SS -> SS SS | IF | WHILE | FOR | CLASS | DEF | IMPORT | RAISE | COMMENT | BREAK | FUNCTION | CONTINUE | WITH | PASS | VAR EQUAL VV | VAR OP EQUAL VV | none;
 ALPHABET -> a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z | A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q | R | S | T | U | V | W | X | Y | Z;
 DIGIT -> 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
-OTHER -> $ | & | . | ? | @ | \ | ^ | ` | ~ | |;
+OTHER -> $ | & | . | ? | @ | \ | ^ | ` | ~ | SERU | HASHTAG | PERSEN | NBO | NBC | MUL | PLUS | MIN | COMMA | DIVIDE | COLON | LESS | EQUAL | GREAT | SBO | SBC | UNDERSCORE | CBO | CBC | PETIK1 | PETIK2 | |;
 SERU -> !;
 HASHTAG -> #;
 PERSEN -> %;
