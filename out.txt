@@ -1,4 +1,4 @@
-SS -> SS SS | VAR A11 | VAR B11 | none | IF_HEADER SS | IF ELIF | IF ELSE | WHILE_HEADER SS | FOR_HEADER SS | CLASS_HEADER CLASS_S | DEF_HEADER DEF_S | DEF_HEADER FUNC_BODY | L5 S21 | K5 T21 | K5 VAR | N5 L21 | N5 M21 | PETIK2 R11 | PETIK1 S11 | HASHTAG BODY | ITERATE Q5 | ITERATE C21 | ITERATE P5 | ITERATE D21 | WITH_HEADER SS | pass
+SS -> SS SS | VAR A11 | VAR B11 | none | IF_HEADER SS | IF ELIF | IF ELSE | WHILE_HEADER SS | FOR_HEADER SS | CLASS_HEADER CLASS_S | DEF_HEADER DEF_S | DEF_HEADER FUNC_BODY | L5 T21 | K5 U21 | K5 VAR | N5 FUNCTION | N5 N21 | PETIK2 R11 | PETIK1 S11 | HASHTAG BODY | ITERATE Q5 | ITERATE C21 | VAR E21 | VAR F21 | ITERATE P5 | ITERATE D21 | WITH_HEADER SS | pass
 A11 -> EQUAL VV
 B11 -> OP B12
 B12 -> EQUAL VV
@@ -31,11 +31,11 @@ PETIK2 -> "
 ALPHANUM -> ALPHANUM ALPHANUM | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z | A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q | R | S | T | U | V | W | X | Y | Z | _
 VAR -> VAR_FIRST ALPHANUM | a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z | A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q | R | S | T | U | V | W | X | Y | Z | _
 NUMBER -> NUMBER NUMBER | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
-STRING_WORD -> STRING_WORD STRING_WORD | a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z | A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q | R | S | T | U | V | W | X | Y | Z | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | $ | & | . | ? | @ | \ | ^ | ` | ~ | |
-VALUE -> VV C11 | NBO D11 | none | NUMBER NUMBER | BOOLEAN F11 | BOOLEAN G11 | X5 BOOLEAN | VV H11 | true | false | STRING STRING | PETIK2 J11 | PETIK1 K11 | SBO L11 | SBO SBC | SBO M11 | SBO N11 | CBO CBC | CBO O11 | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+STRING_WORD -> STRING_WORD STRING_WORD | is | a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z | A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q | R | S | T | U | V | W | X | Y | Z | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | $ | & | . | ? | @ | \ | ^ | ` | ~ | |
+VALUE -> VV C11 | NBO D11 | none | NUMBER NUMBER | BOOLEAN F11 | BOOLEAN G11 | X5 BOOLEAN | VV H11 | true | false | STRING STRING | PETIK2 J11 | PETIK1 K11 | SBO L11 | SBO SBC | SBO M11 | SBO N11 | CBO CBC | CBO O11 | VAR E21 | VAR F21 | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
 C11 -> OP VV
 D11 -> VV NBC
-VV -> VV E11 | VV C11 | NBO D11 | none | VAR_FIRST ALPHANUM | NUMBER NUMBER | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | BOOLEAN F11 | BOOLEAN G11 | X5 BOOLEAN | VV H11 | true | false | STRING STRING | PETIK2 J11 | PETIK1 K11 | SBO L11 | SBO SBC | SBO M11 | SBO N11 | CBO CBC | CBO O11 | a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z | A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q | R | S | T | U | V | W | X | Y | Z | _
+VV -> VV E11 | VV C11 | NBO D11 | none | VAR_FIRST ALPHANUM | NUMBER NUMBER | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | BOOLEAN F11 | BOOLEAN G11 | X5 BOOLEAN | VV H11 | true | false | STRING STRING | PETIK2 J11 | PETIK1 K11 | SBO L11 | SBO SBC | SBO M11 | SBO N11 | CBO CBC | CBO O11 | VAR E21 | VAR F21 | a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z | A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q | R | S | T | U | V | W | X | Y | Z | _
 E11 -> COMMA VV
 Z5 -> and
 BOOLEAN -> BOOLEAN F11 | BOOLEAN G11 | X5 BOOLEAN | VV H11 | true | false
@@ -68,7 +68,7 @@ O11 -> DICT_CONTENT CBC
 DICT_CONTENT -> VV P11 | DICT_CONTENT Q11
 P11 -> COLON VV
 Q11 -> COMMA DICT_CONTENT
-BODY -> BODY BODY | STRING_WORD STRING_WORD | a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z | A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q | R | S | T | U | V | W | X | Y | Z | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | $ | & | . | ? | @ | \ | ^ | ` | ~ | |
+BODY -> BODY BODY | STRING_WORD STRING_WORD | is | a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z | A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q | R | S | T | U | V | W | X | Y | Z | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | $ | & | . | ? | @ | \ | ^ | ` | ~ | |
 COMMENT -> PETIK2 R11 | PETIK1 S11 | HASHTAG BODY
 R11 -> PETIK2 R12
 R12 -> PETIK2 R13
@@ -102,7 +102,7 @@ X13 -> ITERABLE COLON
 FOR_VAR -> VAR Y11 | VAR_FIRST ALPHANUM | a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z | A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q | R | S | T | U | V | W | X | Y | Z | _
 Y11 -> COMMA FOR_VAR
 R5 -> range
-ITERABLE -> R5 Z11 | NBO A21 | NBO B21 | CBO CBC | CBO O11 | SBO L11 | SBO SBC | SBO M11 | SBO N11 | STRING STRING | PETIK2 J11 | PETIK1 K11
+ITERABLE -> R5 Z11 | NBO A21 | NBO B21 | CBO CBC | CBO O11 | SBO L11 | SBO SBC | SBO M11 | SBO N11 | STRING STRING | PETIK2 J11 | PETIK1 K11 | VAR E21 | VAR F21
 Z11 -> NBO Z12
 Z12 -> VV NBC
 A21 -> DICT NBC
@@ -115,74 +115,72 @@ P5 -> continue
 CONTINUE -> ITERATE P5 | ITERATE D21
 D21 -> P5 SS
 PASS -> pass
+FUNCTION -> VAR E21 | VAR F21
+E21 -> NBO E22
+E22 -> VV NBC
+F21 -> NBO NBC
 O5 -> def
-DEF_HEADER -> O5 E21 | O5 F21
-E21 -> VAR E22
-E22 -> NBO E23
-E23 -> VV E24
-E24 -> NBC COLON
-F21 -> VAR F22
-F22 -> NBO F23
-F23 -> NBC COLON
-DEF_S -> DEF_S DEF_S | FUNC_BODY FUNC_BODY | VAR G21 | VAR H21 | none | IF_HEADER FUNC_BODY | IF_FUNC ELIF_FUNC | IF_FUNC ELSE_FUNC | FOR_HEADER FUNC_BODY | WHILE_HEADER FUNC_BODY | ITERATE_FUNC P5 | ITERATE_FUNC J21 | ITERATE_FUNC Q5 | ITERATE_FUNC K21 | CLASS_HEADER CLASS_S | DEF_HEADER DEF_S | DEF_HEADER FUNC_BODY | L5 S21 | K5 T21 | K5 VAR | N5 L21 | N5 M21 | WITH_HEADER FUNC_BODY | pass | RETURN BOOLEAN | RETURN VV | return | PETIK2 R11 | PETIK1 S11 | HASHTAG BODY
-FUNC_BODY -> FUNC_BODY FUNC_BODY | VAR G21 | VAR H21 | none | IF_HEADER FUNC_BODY | IF_FUNC ELIF_FUNC | IF_FUNC ELSE_FUNC | FOR_HEADER FUNC_BODY | WHILE_HEADER FUNC_BODY | ITERATE_FUNC P5 | ITERATE_FUNC J21 | ITERATE_FUNC Q5 | ITERATE_FUNC K21 | CLASS_HEADER CLASS_S | DEF_HEADER DEF_S | DEF_HEADER FUNC_BODY | L5 S21 | K5 T21 | K5 VAR | N5 L21 | N5 M21 | WITH_HEADER FUNC_BODY | pass | RETURN BOOLEAN | RETURN VV | return | PETIK2 R11 | PETIK1 S11 | HASHTAG BODY
-G21 -> EQUAL VV
-H21 -> OP H22
-H22 -> EQUAL VV
+DEF_HEADER -> O5 G21 | O5 H21
+G21 -> VAR G22
+G22 -> NBO G23
+G23 -> VV G24
+G24 -> NBC COLON
+H21 -> VAR H22
+H22 -> NBO H23
+H23 -> NBC COLON
+DEF_S -> DEF_S DEF_S | FUNC_BODY FUNC_BODY | VAR I21 | VAR J21 | none | IF_HEADER FUNC_BODY | IF_FUNC ELIF_FUNC | IF_FUNC ELSE_FUNC | FOR_HEADER FUNC_BODY | WHILE_HEADER FUNC_BODY | ITERATE_FUNC P5 | ITERATE_FUNC L21 | ITERATE_FUNC Q5 | ITERATE_FUNC M21 | CLASS_HEADER CLASS_S | DEF_HEADER DEF_S | DEF_HEADER FUNC_BODY | L5 T21 | K5 U21 | K5 VAR | VAR E21 | VAR F21 | N5 FUNCTION | N5 N21 | WITH_HEADER FUNC_BODY | pass | RETURN BOOLEAN | RETURN VV | return | PETIK2 R11 | PETIK1 S11 | HASHTAG BODY
+FUNC_BODY -> FUNC_BODY FUNC_BODY | VAR I21 | VAR J21 | none | IF_HEADER FUNC_BODY | IF_FUNC ELIF_FUNC | IF_FUNC ELSE_FUNC | FOR_HEADER FUNC_BODY | WHILE_HEADER FUNC_BODY | ITERATE_FUNC P5 | ITERATE_FUNC L21 | ITERATE_FUNC Q5 | ITERATE_FUNC M21 | CLASS_HEADER CLASS_S | DEF_HEADER DEF_S | DEF_HEADER FUNC_BODY | L5 T21 | K5 U21 | K5 VAR | VAR E21 | VAR F21 | N5 FUNCTION | N5 N21 | WITH_HEADER FUNC_BODY | pass | RETURN BOOLEAN | RETURN VV | return | PETIK2 R11 | PETIK1 S11 | HASHTAG BODY
+I21 -> EQUAL VV
+J21 -> OP J22
+J22 -> EQUAL VV
 DEF -> DEF_HEADER DEF_S | DEF_HEADER FUNC_BODY
 RETURN -> RETURN BOOLEAN | RETURN VV | return
 IF_FUNC -> IF_HEADER FUNC_BODY | IF_FUNC ELIF_FUNC | IF_FUNC ELSE_FUNC
 ELIF_FUNC -> ELIF_HEADER FUNC_BODY | ELIF_FUNC ELIF_FUNC | ELIF_FUNC ELSE_FUNC
-ELSE_FUNC -> T5 I21
-I21 -> COLON FUNC_BODY
+ELSE_FUNC -> T5 K21
+K21 -> COLON FUNC_BODY
 FOR_FUNC -> FOR_HEADER FUNC_BODY
 WHILE_FUNC -> WHILE_HEADER FUNC_BODY
-CONTINUE_FUNC -> ITERATE_FUNC P5 | ITERATE_FUNC J21
-J21 -> P5 FUNC_BODY
-BREAK_FUNC -> ITERATE_FUNC Q5 | ITERATE_FUNC K21
-K21 -> Q5 FUNC_BODY
+CONTINUE_FUNC -> ITERATE_FUNC P5 | ITERATE_FUNC L21
+L21 -> P5 FUNC_BODY
+BREAK_FUNC -> ITERATE_FUNC Q5 | ITERATE_FUNC M21
+M21 -> Q5 FUNC_BODY
 WITH_FUNC -> WITH_HEADER FUNC_BODY
 N5 -> raise
-RAISE -> N5 L21 | N5 M21
-L21 -> NBO L22
-L22 -> VV NBC
-M21 -> NBO NBC
+RAISE -> N5 FUNCTION | N5 N21
+N21 -> NBO NBC
 M5 -> class
-CLASS_HEADER -> M5 N21 | M5 O21 | M5 P21
-N21 -> VAR COLON
-O21 -> VAR O22
-O22 -> NBO O23
-O23 -> VV O24
-O24 -> NBC COLON
+CLASS_HEADER -> M5 O21 | M5 P21 | M5 Q21
+O21 -> VAR COLON
 P21 -> VAR P22
 P22 -> NBO P23
-P23 -> NBC COLON
-CLASS_S -> CLASS_S CLASS_S | VAR Q21 | VAR R21 | IF_HEADER SS | IF ELIF | IF ELSE | WHILE_HEADER SS | FOR_HEADER SS | CLASS_HEADER CLASS_S | DEF_HEADER DEF_S | DEF_HEADER FUNC_BODY | ITERATE Q5 | ITERATE C21 | ITERATE P5 | ITERATE D21 | pass | PETIK2 R11 | PETIK1 S11 | HASHTAG BODY
-Q21 -> EQUAL VV
-R21 -> OP R22
-R22 -> EQUAL VV
+P23 -> VV P24
+P24 -> NBC COLON
+Q21 -> VAR Q22
+Q22 -> NBO Q23
+Q23 -> NBC COLON
+CLASS_S -> CLASS_S CLASS_S | VAR R21 | VAR S21 | IF_HEADER SS | IF ELIF | IF ELSE | WHILE_HEADER SS | FOR_HEADER SS | CLASS_HEADER CLASS_S | DEF_HEADER DEF_S | DEF_HEADER FUNC_BODY | VAR E21 | VAR F21 | ITERATE Q5 | ITERATE C21 | ITERATE P5 | ITERATE D21 | pass | PETIK2 R11 | PETIK1 S11 | HASHTAG BODY
+R21 -> EQUAL VV
+S21 -> OP S22
+S22 -> EQUAL VV
 CLASS -> CLASS_HEADER CLASS_S
 L5 -> from
 K5 -> import
-IMPORT -> L5 S21 | K5 T21 | K5 VAR
-S21 -> VAR S22
-S22 -> K5 IMP_S
-J5 -> as
+IMPORT -> L5 T21 | K5 U21 | K5 VAR
 T21 -> VAR T22
-T22 -> J5 VAR
-IMP_S -> VAR U21 | * | VAR_FIRST ALPHANUM | a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z | A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q | R | S | T | U | V | W | X | Y | Z | _
-U21 -> J5 VAR
+T22 -> K5 IMP_S
+J5 -> as
+U21 -> VAR U22
+U22 -> J5 VAR
+IMP_S -> VAR V21 | * | VAR_FIRST ALPHANUM | a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z | A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q | R | S | T | U | V | W | X | Y | Z | _
+V21 -> J5 VAR
 I5 -> with
-H5 -> open
-WITH_HEADER -> I5 V21
-V21 -> H5 V22
-V22 -> NBO V23
-V23 -> VV V24
-V24 -> NBC V25
-V25 -> J5 V26
-V26 -> VAR COLON
+WITH_HEADER -> I5 W21
+W21 -> FUNCTION W22
+W22 -> J5 W23
+W23 -> VAR COLON
 WITH -> WITH_HEADER SS
-S0 -> SS SS | VAR A11 | VAR B11 | none | IF_HEADER SS | IF ELIF | IF ELSE | WHILE_HEADER SS | FOR_HEADER SS | CLASS_HEADER CLASS_S | DEF_HEADER DEF_S | DEF_HEADER FUNC_BODY | L5 S21 | K5 T21 | K5 VAR | N5 L21 | N5 M21 | PETIK2 R11 | PETIK1 S11 | HASHTAG BODY | ITERATE Q5 | ITERATE C21 | ITERATE P5 | ITERATE D21 | WITH_HEADER SS | pass
+S0 -> SS SS | VAR A11 | VAR B11 | none | IF_HEADER SS | IF ELIF | IF ELSE | WHILE_HEADER SS | FOR_HEADER SS | CLASS_HEADER CLASS_S | DEF_HEADER DEF_S | DEF_HEADER FUNC_BODY | L5 T21 | K5 U21 | K5 VAR | N5 FUNCTION | N5 N21 | PETIK2 R11 | PETIK1 S11 | HASHTAG BODY | ITERATE Q5 | ITERATE C21 | VAR E21 | VAR F21 | ITERATE P5 | ITERATE D21 | WITH_HEADER SS | pass
 VAR_FIRST -> a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z | A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q | R | S | T | U | V | W | X | Y | Z | _
 OP -> + | - | * | / | DIVIDE DIVIDE | MUL MUL | %
 ITERATE -> W5 X11 | S5 W11 | FOR_HEADER SS | WHILE_HEADER SS

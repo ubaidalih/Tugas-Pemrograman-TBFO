@@ -1,8 +1,13 @@
 def do_something(x):
-    if 1x == 0 + 1 :
+    ''' This is a sample multiline comment
+    '''
+    if x == 0:
         return 0
     elif x + 4 == 1:
-        x = 1
+        if true:
+            return 3
+        else:
+            return 2
     elif x == 32:
         return 4
     else:
