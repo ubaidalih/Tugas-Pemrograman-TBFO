@@ -41,10 +41,6 @@ def splitOperator(filename):
                     temp.append('1')
                 elif statement == '':
                     continue
-                else :
-                    valid = False
-                    print("Variable/Function Name Error")
-                    break
             
     return temp,valid
 
