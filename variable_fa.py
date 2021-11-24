@@ -71,10 +71,3 @@ def isNumber(s):
         return True
     else :
         return False
-
-# str = "12a"
-# if(isNumber(str)):
-#     print("Variable accepted")
-# else:
-#     print("Variable error")
-        
