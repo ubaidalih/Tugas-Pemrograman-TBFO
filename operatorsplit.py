@@ -6,12 +6,18 @@ def splitOperator(filename):
     inputfile = f.read()
     f.close()
 
+    output = []
     # split the target string on the occurance of one or more whitespace characters
-    output = re.split(r'\s+', inputfile)
-    #print(output)
+    inputfile = inputfile.split(" ")
+    print(inputfile)
+    for statement in inputfile:
+        if statement != '':
+            output.append(statement)
+            
+    # print(output)
 
-    operator = ['=', '!=', '==', '>=', '<=', '<', '>', ':', ',', '/', '-', r'\+', r'\*', r'\*\*', r'\'', r'\"', r'\'\'\'', r'\(', r'\)', 'none', 'not', 'true', 'false', r'\{', r'\}', r'\[', r'\]', 'for', '#', 'elif', 'else', 'while', 'break', 'continue', 'pass', 'def', 'return', 'range', 'raise', 'class', 'from', 'import', 'with', '%']
-    operator2 = ['=', '!=', '==', '>=', '<=', '<', '>', ':', ',', '/', '-', '+', '*', '**', "'", '"', '(', ')', 'none', 'not', 'true', 'false', '{', '}', '[', ']', 'for', '#', 'elif', 'else', 'while', 'break', 'continue', 'pass', 'def', 'return', 'range', 'raise', 'class', 'from', 'import', 'with', '%']
+    operator = ['=', '!=', '==', '>=', '<=', '<', '>', ':', ',', '/', '-', r'\+', r'\*', r'\*\*', r'\'', r'\"', r'\'\'\'', r'\(', r'\)', 'none', 'not', 'true', 'false', r'\{', r'\}', r'\[', r'\]', 'for', '#', 'elif', 'else', 'while', 'break', 'continue', 'pass', 'def', 'return', 'range', 'raise', 'class', 'from', 'import', 'with', '%', '\n']
+    operator2 = ['=', '!=', '==', '>=', '<=', '<', '>', ':', ',', '/', '-', '+', '*', '**', "'", '"', '(', ')', 'none', 'not', 'true', 'false', '{', '}', '[', ']', 'for', '#', 'elif', 'else', 'while', 'break', 'continue', 'pass', 'def', 'return', 'range', 'raise', 'class', 'from', 'import', 'with', '%', '\n']
     
     # split the target string with the following pattern
     for oper in operator:
@@ -42,7 +48,7 @@ def splitOperator(filename):
                 elif statement == '':
                     continue
             
-    return temp,valid
+    return temp
 
-# tes = splitOperator("tes.txt")
+# splitOperator("tes.py")
 # print(tes)
